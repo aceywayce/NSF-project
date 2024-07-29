@@ -1,0 +1,50 @@
+import pandas as pd
+from datetime import datetime
+
+# Define columns for car listings
+columns_cars = ['Date Listed', 'Car ID', 'Make', 'Model', 'Year', 'Dealership', 'Price']
+
+# Create an empty dataframe for car listings
+df_cars = pd.DataFrame(columns=columns_cars)
+
+# Function to add a new car listing
+def add_car_listing(date_listed, car_id, make, model, year, dealership, price):
+    global df_cars
+    df_cars = df_cars.append({
+        'Date Listed': date_listed,
+        'Car ID': car_id,
+        'Make': make,
+        'Model': model,
+        'Year': year,
+        'Dealership': dealership,
+        'Price': price
+    }, ignore_index=True)
+
+# Example data entry
+add_car_listing(datetime(2023, 1, 10), 1, 'Toyota', 'Corolla', 2022, 'Honolulu Auto', 20000)
+add_car_listing(datetime(2023, 2, 15), 2, 'Honda', 'Civic', 2023, 'Maui Motors', 22000)
+add_car_listing(datetime(2023, 3, 5), 3, 'Ford', 'Mustang', 2023, 'Kauai Cars', 35000)
+add_car_listing(datetime(2023, 4, 20), 4, 'Tesla', 'Model 3', 2023, 'Oahu EVs', 45000)
+add_car_listing(datetime(2024, 1, 8), 5, 'Chevrolet', 'Malibu', 2023, 'Big Island Auto', 25000)
+
+# Calculate the average price of the cars
+average_price = df_cars['Price'].mean()
+
+# Save data to a CSV file
+df_cars.to_csv('hawaii_dealership_cars_2023_2024.csv', index=False)
+
+# Print summary data
+print("Car Listings from 2023 to 2024 in Hawaii")
+print(f"Total Cars Listed: {len(df_cars)}")
+print(f"Average Price: ${average_price:.2f}")
+print("\nDetails:")
+print(df_cars)
+
+# Optional: Function to get average price by year
+def get_average_price_by_year():
+    df_cars['Year Listed'] = df_cars['Date Listed'].dt.year
+    avg_price_by_year = df_cars.groupby('Year Listed')['Price'].mean()
+    print("\nAverage Price by Year:")
+    print(avg_price_by_year)
+
+get_average_price_by_year()

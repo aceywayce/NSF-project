@@ -1,1 +1,1 @@
-Hi I am Noah. This is my NSF prject for the internship, I have made codes to help organize paitient reocrds from Jaunry to December in 2024 for maui medical center and a code to help find cars listed at dealerships in Hawaii 2023 to 2024 and there average prices.
+Hi I am Noah. This is my NSF project for the internship, I have made codes to help organize patient records from January to December in 2024 for maui medical center and a code to help find cars listed at dealerships in Hawaii 2023 to 2024 and there average prices.
